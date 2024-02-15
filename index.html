@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>25th Anniversary Invitation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      #intro {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        cursor: pointer;
+      }
+
+      #intro img {
+        width: 200px;
+        animation: heartbeat 1s infinite;
+      }
+
+      #invitation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: none;
+        z-index: 2;
+        overflow-y: scroll;
+      }
+
+      #invitation img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+
+      #content {
+        padding: 20px;
+        text-align: center;
+        position: relative;
+      }
+
+      #invitation-img img {
+        width: 70%; /* Adjust the width as needed */
+        margin: 0 auto;
+      }
+
+      .couple-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        padding: auto;
+        animation: floatAndMove 4s infinite alternate;
+      }
+
+      .couple-img {
+        width: 300px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 30px;
+      }
+
+      #map {
+        position: relative;
+        margin-top: 300px; /* Adjust the initial margin-top as needed */
+      }
+
+      #map-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none;
+      }
+
+      #map-button i {
+        margin-left: 5px;
+      }
+
+      /* Heart Balloons */
+      .heart-balloon {
+        position: absolute;
+        width: 1000px;
+        height: 1000px;
+        background: url("balloon.png");
+        background-size: cover;
+        animation: floatBalloons 4s infinite alternate,
+          shrinkBalloons 10s forwards;
+      }
+
+      .heart-balloon.left {
+        left: 20px;
+        top: 20px;
+      }
+
+      .heart-balloon.right {
+        right: 20px;
+        top: 20px;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes floatAndMove {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(20px);
+        }
+      }
+
+      @keyframes floatBalloons {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes shrinkBalloons {
+        0% {
+          width: 1000px;
+          height: 1000px;
+        }
+        100% {
+          width: 150px; /* Adjust the width as needed */
+          height: 150px; /* Adjust the height as needed */
+        }
+      }
+
+      /* Responsive Styles */
+      @media screen and (max-width: 600px) {
+        #invitation-img img {
+          width: 100%;
+          margin-top: 90px;
+          margin-bottom: 50px;
+        }
+
+        .couple-img {
+          width: 250px;
+        }
+
+        #map {
+          margin-top: 150px;
+        }
+
+        /* Adjust balloon size for smaller screens */
+        .heart-balloon {
+          width: 5px;
+          height: 5px;
+        }
+        .heart-balloon.left {
+          left: -2px;
+          top: 1px;
+        }
+
+        .heart-balloon.right {
+          right: -2px;
+          top: 1px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="intro" onclick="openInvitation()">
+      <img id="heartbeat-img" src="message.jpg" alt="Invitation Card" />
+      <p>Open Invitation</p>
+    </div>
+
+    <div id="invitation">
+      <div id="content">
+        <div id="invitation-img">
+          <img src="invitation.jpg" alt="Invitation Card" />
+        </div>
+        <h2>25th Marriage Anniversary!</h2>
+        <p>Celebrating the love and joy of 25 wonderful years together.</p>
+
+        <div class="couple-container">
+          <div class="couple-img">
+            <img src="mom.JPG" alt="Bride" />
+          </div>
+          <div class="couple-img">
+            <img src="dad.JPG" alt="Groom" />
+          </div>
+        </div>
+
+        <p>Mr. and Mrs. Dahiya</p>
+
+        <div id="map"></div>
+        <!-- Replace the following iframe with your Google Maps iframe code -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.379970231562!2d77.12211317561142!3d28.708188480640874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d015fc4e25741%3A0xd36a9b7601f71f81!2sRoyal%20Occasion%20Banquet!5e0!3m2!1sen!2sin!4v1707988975631!5m2!1sen!2sin"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+
+        <!-- Map Button -->
+        <button id="map-button" onclick="scrollToMap()">
+          Scroll to Map <i class="fas fa-arrow-down"></i>
+        </button>
+
+        <!-- Heart Balloons -->
+        <div class="heart-balloon left"></div>
+        <div class="heart-balloon right"></div>
+      </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var heartbeatImg = document.getElementById("heartbeat-img");
+        heartbeatImg.style.animationPlayState = "running";
+      });
+
+      function openInvitation() {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("invitation").style.display = "block";
+        document.getElementById("map-button").style.display = "block";
+      }
+
+      // Show the Map Button when scrolled down
+      window.onscroll = function () {
+        var mapButton = document.getElementById("map-button");
+
+        var scrollPosition =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollPosition > 0) {
+          mapButton.style.display = "block";
+        } else {
+          mapButton.style.display = "none";
+        }
+      };
+
+      // Scroll to Map Function
+      function scrollToMap() {
+        var mapSection = document.getElementById("map");
+        mapSection.scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
